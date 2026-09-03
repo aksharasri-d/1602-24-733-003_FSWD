@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Details</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc, #e0f2fe);
+            padding: 50px 20px;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            font-size: 36px;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        .table-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 14px;
+        }
+
+        th {
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            color: white;
+            padding: 16px 12px;
+            font-size: 14px;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+        td {
+            padding: 15px 12px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            font-size: 14px;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        tbody tr:hover {
+            background: #eff6ff;
+            transition: 0.2s;
+        }
+
+        .serial {
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: #dcfce7;
+            color: #166534;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media(max-width: 700px) {
+            .heading h1 {
+                font-size: 28px;
+            }
+
+            .table-card {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="heading">
+        <h1>Internship Details</h1>
+        <p>Student Internship Performance Record</p>
+    </div>
+
+    <div class="table-card">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th rowspan="2">S.No</th>
+                    <th rowspan="2">Details of Internship</th>
+                    <th rowspan="2">Duration<br>(Months)</th>
+
+                    <th colspan="2">Internship Period</th>
+
+                    <th colspan="3">Internship Performance Details</th>
+                </tr>
+
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Report<br>Submitted</th>
+                    <th>Grade</th>
+                    <th>Mentor Remarks</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td class="serial">1</td>
+                    <td>Web Development Internship</td>
+                    <td>3</td>
+                    <td>01/06/2026</td>
+                    <td>31/08/2026</td>
+                    <td><span class="status">Yes</span></td>
+                    <td>A+</td>
+                    <td>Excellent Performance</td>
+                </tr>
+
+                <tr>
+                    <td class="serial">2</td>
+                    <td>AI & Machine Learning Internship</td>
+                    <td>2</td>
+                    <td>01/07/2026</td>
+                    <td>31/08/2026</td>
+                    <td><span class="status">Yes</span></td>
+                    <td>A</td>
+                    <td>Very Good Work</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="footer">
+        © 2026 Internship Management System
+    </div>
+
+</div>
+
+</body>
+</html>
