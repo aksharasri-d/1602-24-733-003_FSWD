@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Registration Form</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body style="font-family: Arial; background:#eef2ff; padding:25px;">
+
+<div id="root"></div>
+
+<script type="text/babel">
+function StudentForm() {
+  const [form, setForm] = React.useState({
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: ""
+  });
+
+  const [errors, setErrors] = React.useState({});
+  const [submitted, setSubmitted] = React.useState(false);
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setSubmitted(false);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    let err = {};
+
+    if (!form.name.trim())
+      err.name = "Name is required";
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      err.email = "Enter a valid email";
+
+    if (!/^[0-9]{10}$/.test(form.phone))
+      err.phone = "Phone must be 10 digits";
+
+    if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(form.password))
+      err.password = "Use 8+ characters, uppercase, lowercase, number and special character";
+
+    if (form.confirmPassword !== form.password)
+      err.confirmPassword = "Passwords do not match";
+
+    setErrors(err);
+
+    if (Object.keys(err).length === 0)
+      setSubmitted(true);
+    else
+      setSubmitted(false);
+  }
+
+  const inputStyle = {
+    width: "95%",
+    padding: "10px",
+    marginTop: "6px",
+    border: "1px solid #cbd5e1",
+    borderRadius: "6px",
+    fontSize: "15px"
+  };
+
+  function field(label, name, type = "text") {
+    return (
+      <div style={{ marginBottom: "15px" }}>
+        <label style={{ fontWeight: "bold" }}>{label}</label>
+        <input
+          type={type}
+          name={name}
+          value={form[name]}
+          onChange={handleChange}
+          style={inputStyle}
+        />
+        <p style={{ color: "red", fontSize: "13px", margin: "4px 0" }}>
+          {errors[name]}
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{
+      maxWidth: "450px",
+      margin: "auto",
+      background: "white",
+      padding: "25px",
+      borderRadius: "12px",
+      boxShadow: "0 4px 15px #cbd5e1"
+    }}>
+      <h2 style={{ textAlign: "center", color: "#3730a3" }}>
+        Student Registration
+      </h2>
+
+      <form onSubmit={handleSubmit}>
+        {field("Full Name", "name")}
+        {field("Email", "email", "email")}
+        {field("Phone Number", "phone", "tel")}
+        {field("Password", "password", "password")}
+        {field("Confirm Password", "confirmPassword", "password")}
+
+        <button type="submit" style={{
+          width: "100%",
+          padding: "12px",
+          background: "#4338ca",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          fontSize: "16px",
+          cursor: "pointer"
+        }}>
+          Register
+        </button>
+      </form>
+
+      {submitted && (
+        <div style={{
+          marginTop: "20px",
+          padding: "15px",
+          background: "#dcfce7",
+          borderRadius: "8px",
+          color: "#166534"
+        }}>
+          <h3>Registration Successful!</h3>
+          <p>Name: {form.name}</p>
+          <p>Email: {form.email}</p>
+          <p>Phone: {form.phone}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root"))
+  .render(<StudentForm />);
+</script>
+
+</body>
+</html>
